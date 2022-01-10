@@ -5,7 +5,8 @@ const Schema=mongoose.Schema;
 const Category=Schema({
     
     user_id:{
-        type:String,
+        type:Schema.Types.ObjectId,
+        ref:"UserModel"
     },
     category_name:{
         type:String,
@@ -24,5 +25,6 @@ const Category=Schema({
     },
     
 
-});
+},
+{ collection: 'categories'});
 module.exports=mongoose.model("Category",Category);

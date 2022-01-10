@@ -1,8 +1,7 @@
 const mongoose=require("mongoose");
-
 const Schema=mongoose.Schema;
 
-const Expense=Schema({
+var Transactions=Schema({
     user_id:{
         type:Schema.Types.ObjectId,
         ref:"UserModel",
@@ -17,24 +16,23 @@ const Expense=Schema({
         ref:"Category"
         
     },
-    expense_name:{
+    transaction_name:{
         type:String,
         required:true,
     
     },
-    expense_amount:{
+    transaction_amount:{
         type:Number,
         required:true
     },
-    expense_date:{
+    transaction_date:{
         type:Date,
         required:true
     },
-    expense_note:{
+    transaction_note:{
         type:String,
 
     }
+},{collection:"transactions"})
 
-},
-{ collection: 'expenses'});
-module.exports=mongoose.model("Expense",Expense);
+module.exports=mongoose.model("Transactions",Transactions);

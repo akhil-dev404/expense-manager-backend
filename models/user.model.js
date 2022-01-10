@@ -16,7 +16,8 @@ var userSchema=mongoose.Schema({
         required:true,
         
     },
-})
+    
+},{ collection: 'user'})
 
 
 module.exports=mongoose.model("UserModel",userSchema);

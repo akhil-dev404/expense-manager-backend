@@ -4,11 +4,13 @@ const Schema=mongoose.Schema;
 const incomeSchema=Schema({
     user_id:{
         required:true,
-        type:String
+        type:Schema.Types.ObjectId,
+        ref:'UserModel'
     },
    category_id:{
         required:true,
-        type:String
+        type:Schema.Types.ObjectId,
+        ref:"Category"
     },
 
     income_name:{
@@ -25,5 +27,5 @@ const incomeSchema=Schema({
         required:true
     },
 
-})
-module.exports=mongoose.model("incomeModel",incomeSchema);
+},{ collection: 'incomes'})
+module.exports=mongoose.model("Incomes",incomeSchema);
