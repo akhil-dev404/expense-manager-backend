@@ -26,4 +26,4 @@ const incomeSchema=Schema({
     },
 
 })
-module.exports=mongoose.model("Income",incomeSchema);
+module.exports=mongoose.model("incomeModel",incomeSchema);

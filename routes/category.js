@@ -13,7 +13,7 @@ router.post("/add_category",(req,res)=>{
         
         category_icon:req.body.category_icon
 
-    })
+    });
 
     newcategory.save((err,newcategory)=>{
         if(err){
@@ -23,6 +23,6 @@ router.post("/add_category",(req,res)=>{
             res.send({message:"Success",data:newcategory});
         }
     });
-})
+});
 
 module.exports=router;
