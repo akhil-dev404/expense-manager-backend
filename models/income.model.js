@@ -17,7 +17,7 @@ const incomeSchema=Schema({
     
     },
     income_amount:{
-        type:String,
+        type:Number,
         required:true
     },
     income_date:{

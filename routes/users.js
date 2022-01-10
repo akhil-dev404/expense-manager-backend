@@ -6,8 +6,8 @@ var UserModel =require("../models/user.model")
 
 
 /* GET users listing. */
-router.get('/get_details', function(req, res, next) {
-  UserModel.findById(req.body.userId,(err,result)=>{
+router.get('/get_details/:username', function(req, res, next) {
+  UserModel.findById(req.params.username,(err,result)=>{
     if(err){
       res.send(err);
     }

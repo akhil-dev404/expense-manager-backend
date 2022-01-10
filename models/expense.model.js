@@ -21,7 +21,7 @@ const Expense=Schema({
     
     },
     expense_amount:{
-        type:String,
+        type:Number,
         required:true
     },
     expense_date:{
