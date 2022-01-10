@@ -10,7 +10,7 @@ const connectionUrl='mongodb+srv://akhildev-404:devakhil7025@cluster0.wohdi.mong
 const connectionParams={
   useNewUrlParser: true,
 }
-mongoose.connect(connectionUrl||'mongodb://localhost/expenseDb',connectionParams);
+mongoose.connect(process.env.connectionUrl||'mongodb://localhost/expenseDb',connectionParams);
 const connection=mongoose.connection;
 connection.once('open',()=>{
     console.log('Connected');
