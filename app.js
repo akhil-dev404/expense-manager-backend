@@ -6,12 +6,12 @@ var logger = require('morgan');
 
 var mongoose=require("mongoose");
 // mongoose.connect('mongodb://localhost/expenseDb');
-const connectionUrl='mongodb+srv://akhildev-404:devakhil7025@cluster0.wohdi.mongodb.net/expenseDb?retryWrites=true&w=majority'
+const connectionUrl='mongodb+srv://akhildev-404:devakhil7025@cluster0.wohdi.mongodb.net/?retryWrites=true&w=majority'
 const connectionParams={
   useNewUrlParser: true,
 }
 
-mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/expenseDb',connectionParams);
+mongoose.connect(process.env.MONGODB_URI||connectionUrl||'mongodb://localhost/expenseDb',connectionParams);
 const connection=mongoose.connection;
 connection.once('open',()=>{
     console.log('Connected');
@@ -27,6 +27,7 @@ var usersRouter = require('./routes/users');
 var categoryRouter=require('./routes/category');
 var expenseRouter=require('./routes/expense');
 var incomeRouter=require('./routes/income');
+var transactioRouter=require('./routes/transaction');
 
 
 var app = express();
@@ -46,6 +47,7 @@ app.use('/users', usersRouter);
 app.use('/category',categoryRouter);
 app.use('/expense',expenseRouter);
 app.use('/income',incomeRouter);
+app.use('/transaction',transactioRouter);
 
 
 // catch 404 and forward to error handler

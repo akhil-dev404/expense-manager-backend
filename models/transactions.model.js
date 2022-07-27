@@ -9,11 +9,11 @@ var Transactions=Schema({
        
         
     },
-    category_id:{
-       
-        required:true,
+    category_id:{   
+        
         type:Schema.Types.ObjectId,
-        ref:"Category"
+        ref:"categories",
+        required:true,
         
     },
     transaction_name:{
