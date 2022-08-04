@@ -20,4 +20,4 @@ var userSchema=mongoose.Schema({
 },{ collection: 'user'})
 
 
-module.exports=mongoose.model("UserModel",userSchema);
+module.exports=mongoose.model("UserModel",userSchema)

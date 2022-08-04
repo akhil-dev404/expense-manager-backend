@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var UserModel =require("../models/user.model")
+var commonFunctions=require("../functions/functions")
 // var mongoose=require("mongoose");
 // const req = require('express/lib/request');
 
@@ -19,23 +20,28 @@ router.get('/get_details/:username', function(req, res, next) {
 
 });
 
-router.post('/add_user', function(req, res, next) {
-console.log(req.body);
-  const newUser=new UserModel({
-    username:req.body.username,
-    password:req.body.password,
-    email:req.body.email,
-  })
+router.get('/me',async(req,res)=>{
+  
+var data=await commonFunctions.getme(commonFunctions.jsonIf(req.body))
+if(!data){
+  res.status(400).json({"message":"error"});
+}
+else{
+  res.status(200).json(data);
+}
+})
 
-  newUser.save((err,newUser)=>{
-    if(err){
-      res.send(err);
-    }
-    
-    else{
-       res.send({status:200,message:"sucess",data:newUser});
-    }
-  })
+router.post('/add_user', async(req, res,)=> {
+  var data=await commonFunctions.addUser(commonFunctions.jsonIf(req.body),res)
+  console.log(data)
+  if(!data){
+    res.status(400).json({"message":"error"});
+  }
+  else{
+    res.status(200).json(data);
+  }
+
+  
 })
 
 router.put("/update_user",(req,res)=>{
