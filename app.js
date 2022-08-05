@@ -11,7 +11,7 @@ const connectionParams={
   useNewUrlParser: true,
 }
 
-mongoose.connect(process.env.MONGODB_URI||connectionUrl||'mongodb://localhost/expenseDb',connectionParams);
+mongoose.connect(process.env.MONGODB_URI||connectionUrl||'mongodb://localhost:expenceappDb',connectionParams);
 const connection=mongoose.connection;
 connection.once('open',()=>{
     console.log('Connected');

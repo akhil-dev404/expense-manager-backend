@@ -5,21 +5,16 @@ var Transactions=Schema({
     user_id:{
         type:Schema.Types.ObjectId,
         ref:"UserModel",
-        required:true,
-       
-        
+        required:true,       
     },
-    category_id:{   
-        
+    category_id:{         
         type:Schema.Types.ObjectId,
         ref:"categories",
-        required:true,
-        
+        required:true,    
     },
     transaction_name:{
         type:String,
-        required:true,
-    
+        required:true, 
     },
     transaction_amount:{
         type:Number,

@@ -8,6 +8,10 @@ const Category=Schema({
         type:Schema.Types.ObjectId,
         ref:"UserModel"
     },
+    category_id:{
+        type:String,
+        required:true
+    },
     category_name:{
         type:String,
         required:true,
@@ -18,13 +22,7 @@ const Category=Schema({
         required:true,
 
     },
-    
-    category_icon:{
-        type:String,
-        required:true
-    },
-    
-
+      
 },
 { collection: 'categories'});
 module.exports=mongoose.model("Category",Category);

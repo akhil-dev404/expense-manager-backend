@@ -8,7 +8,9 @@ var commonFunctions=require("../functions/functions")
 
 /* GET users listing. */
 router.get('/get_details/:username', function(req, res, next) {
+  console.log('ssdsd')
   UserModel.findById(req.params.username,(err,result)=>{
+    console.log(result)
     if(err){
       res.send(err);
     }
@@ -20,30 +22,8 @@ router.get('/get_details/:username', function(req, res, next) {
 
 });
 
-router.get('/me',async(req,res)=>{
-  
-var data=await commonFunctions.getme(commonFunctions.jsonIf(req.body))
-if(!data){
-  res.status(400).json({"message":"error"});
-}
-else{
-  res.status(200).json(data);
-}
-})
-
-router.post('/add_user', async(req, res,)=> {
-  var data=await commonFunctions.addUser(commonFunctions.jsonIf(req.body),res)
-  console.log(data)
-  if(!data){
-    res.status(400).json({"message":"error"});
-  }
-  else{
-    res.status(200).json(data);
-  }
-
-  
-})
-
+router.get('/me',commonFunctions.getme)
+router.post('/add_user',commonFunctions.addUser)
 router.put("/update_user",(req,res)=>{
   UserModel.findByIdAndUpdate(req.body.userId,{username:req.body.username},(err,result)=>{
     if(err){
@@ -54,4 +34,5 @@ router.put("/update_user",(req,res)=>{
     }
   })
 });
+router.get('/home_screen/:user_id',commonFunctions.getHomeScreen)
 module.exports = router;
